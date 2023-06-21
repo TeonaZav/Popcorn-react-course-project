@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from "react";
+import NavBar from "./components/NavBar.jsx";
+import Main from "./components/Main.jsx";
+import { tempMovieData } from "./data";
+import { tempWatchedData } from "./data";
 function App() {
+  const [movies, setMovies] = useState(tempMovieData);
+  const [watched, setWatched] = useState(tempWatchedData);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar movies={movies} />
+      <Main movies={movies} watched={watched} />
     </div>
   );
 }
