@@ -43,5 +43,4 @@ export const tempWatchedData = [
     imdbRating: 8.5,
     userRating: 9,
   },
-  1,
 ];
