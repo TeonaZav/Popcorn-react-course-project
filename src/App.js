@@ -10,23 +10,36 @@ import MovieList from "./components/MovieList.jsx";
 import Loader from "./components/Loader.jsx";
 import ErrorMessage from "./components/ErrorMessage.jsx";
 
-import { tempMovieData } from "./data";
-import { tempWatchedData } from "./data";
+// import { tempMovieData } from "./data";
+// import { tempWatchedData } from "./data";
 
 const KEY = "4b367d74";
 
 function App() {
-  const [movies, setMovies] = useState(tempMovieData);
-  const [watched, setWatched] = useState(tempWatchedData);
+  const [query, setQuery] = useState("inception");
+  const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [selectedId, setSelectedId] = useState(null);
 
-  const query = "interstellar";
+  const handleSelectMovie = (id) => {
+    setSelectedId((selectedId) => (id === selectedId ? null : id));
+  };
+
+  const handleCloseMovie = () => {
+    setSelectedId(null);
+  };
+
+  const handleWatchedMovie = (movie) => {
+    setWatched((watchedMovie) => [...watchedMovie, movie]);
+  };
 
   useEffect(() => {
     async function fetchMovies() {
       try {
         setIsLoading(true);
+        setError("");
         const res = await fetch(
           `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
         );
@@ -45,14 +58,19 @@ function App() {
         setIsLoading(false);
       }
     }
+    if (query.length < 3) {
+      setMovies([]);
+      setError("");
+      return;
+    }
     fetchMovies();
-  }, []);
+  }, [query]);
 
   return (
     <div className="App">
       <NavBar>
         <Logo />
-        <Search />
+        <Search query={query} setQuery={setQuery} />
         <NumResult movies={movies} />
       </NavBar>
       <Main>
@@ -61,13 +79,18 @@ function App() {
             isLoading && !error ? (
               <Loader />
             ) : !isLoading && !error ? (
-              <MovieList movies={movies} />
+              <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
             ) : (
               <ErrorMessage message={error} />
             )
           }
         />
-        <WatchedBox watched={watched} />
+        <WatchedBox
+          watched={watched}
+          selectedId={selectedId}
+          onCloseMovie={handleCloseMovie}
+          onAddWatched={handleWatchedMovie}
+        />
       </Main>
     </div>
   );
