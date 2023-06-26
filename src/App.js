@@ -10,9 +10,6 @@ import MovieList from "./components/MovieList.jsx";
 import Loader from "./components/Loader.jsx";
 import ErrorMessage from "./components/ErrorMessage.jsx";
 
-// import { tempMovieData } from "./data";
-// import { tempWatchedData } from "./data";
-
 const KEY = "4b367d74";
 
 function App() {
@@ -33,6 +30,12 @@ function App() {
 
   const handleWatchedMovie = (movie) => {
     setWatched((watchedMovie) => [...watchedMovie, movie]);
+  };
+
+  const handleDeleteWatched = (id) => {
+    setWatched((watchedMovie) =>
+      watchedMovie.filter((movie) => movie.imdbID !== id)
+    );
   };
 
   useEffect(() => {
@@ -90,6 +93,7 @@ function App() {
           selectedId={selectedId}
           onCloseMovie={handleCloseMovie}
           onAddWatched={handleWatchedMovie}
+          onDeleteWatched={handleDeleteWatched}
         />
       </Main>
     </div>

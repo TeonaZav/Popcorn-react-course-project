@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import WatchedSummary from "./WatchedSummary";
 import WatchedMoviesList from "./WatchedMoviesList";
 import MovieDetails from "./MovieDetails";
-const WatchedBox = ({ watched, selectedId, onAddWatched, onCloseMovie }) => {
+const WatchedBox = ({
+  watched,
+  selectedId,
+  onAddWatched,
+  onCloseMovie,
+  onDeleteWatched,
+}) => {
   const [isOpen2, setIsOpen2] = useState(true);
 
   return (
@@ -25,7 +31,10 @@ const WatchedBox = ({ watched, selectedId, onAddWatched, onCloseMovie }) => {
           </button>
           {isOpen2 && (
             <>
-              <WatchedMoviesList watched={watched} />
+              <WatchedMoviesList
+                watched={watched}
+                onDeleteWatched={onDeleteWatched}
+              />
             </>
           )}
         </>
