@@ -45,7 +45,7 @@ const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
     Genre: genre,
   } = movie;
 
-  const handleAdd = () => {
+  function handleAdd() {
     const newWatchedMovie = {
       imdbID: selectedId,
       title,
@@ -58,7 +58,7 @@ const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
     };
     onAddWatched(newWatchedMovie);
     onCloseMovie();
-  };
+  }
 
   useKey("Escape", onCloseMovie);
 

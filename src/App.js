@@ -20,23 +20,23 @@ function App() {
 
   const [watched, setWatched] = useLocalStorageState([], "watched");
 
-  const handleSelectMovie = (id) => {
+  function handleSelectMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
-  };
+  }
 
   function handleCloseMovie() {
     setSelectedId(null);
   }
 
-  const handleWatchedMovie = (movie) => {
+  function handleWatchedMovie(movie) {
     setWatched((watchedMovie) => [...watchedMovie, movie]);
-  };
+  }
 
-  const handleDeleteWatched = (id) => {
+  function handleDeleteWatched(id) {
     setWatched((watchedMovie) =>
       watchedMovie.filter((movie) => movie.imdbID !== id)
     );
-  };
+  }
 
   return (
     <div className="App">
