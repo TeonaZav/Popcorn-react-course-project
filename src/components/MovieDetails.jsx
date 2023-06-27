@@ -6,7 +6,16 @@ import { useKey } from "../hooks/useKey.js";
 const KEY = `${process.env.REACT_APP_API_KEY}`;
 
 const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState({
+    imdbID: "tt5079024",
+    imdbRating: 8.9,
+    poster:
+      "https://m.media-amazon.com/images/M/MV5BZTUxZWRlZDQtY2Y2My00NjM2LWJiNzQtOTZjNGFmZDM5NWFlXkEyXkFqcGdeQXVyMTExNDQ2MTI@._V1_SX300.jpg",
+    runtime: null,
+    title: "Yungnyong-i Nareusya",
+    userRating: 9,
+    year: "2015–2016",
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState("");
 
