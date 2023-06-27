@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Popcorn-react-course-project/static/css/main.9c5609d1.css",
-    "main.js": "/Popcorn-react-course-project/static/js/main.3cbeca54.js",
+    "main.js": "/Popcorn-react-course-project/static/js/main.a8e6159e.js",
     "index.html": "/Popcorn-react-course-project/index.html",
     "main.9c5609d1.css.map": "/Popcorn-react-course-project/static/css/main.9c5609d1.css.map",
-    "main.3cbeca54.js.map": "/Popcorn-react-course-project/static/js/main.3cbeca54.js.map"
+    "main.a8e6159e.js.map": "/Popcorn-react-course-project/static/js/main.a8e6159e.js.map"
   },
   "entrypoints": [
     "static/css/main.9c5609d1.css",
-    "static/js/main.3cbeca54.js"
+    "static/js/main.a8e6159e.js"
   ]
 }
