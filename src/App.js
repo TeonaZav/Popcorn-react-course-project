@@ -13,12 +13,16 @@ import ErrorMessage from "./components/ErrorMessage.jsx";
 const KEY = "4b367d74";
 
 function App() {
-  const [query, setQuery] = useState("interstellar");
+  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
+  // const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useState(() => {
+    const storedValue = localStorage.getItem("watched");
+    return JSON.parse(storedValue);
+  });
 
   const handleSelectMovie = (id) => {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
@@ -37,6 +41,9 @@ function App() {
       watchedMovie.filter((movie) => movie.imdbID !== id)
     );
   };
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify(watched));
+  }, [watched]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -58,7 +65,7 @@ function App() {
         setMovies(data.Search);
         setError("");
       } catch (err) {
-        console.error(err);
+        console.log(err);
         if (err.name !== "AbortError") {
           setError(err.message);
         }
@@ -71,7 +78,10 @@ function App() {
       setError("");
       return;
     }
+
+    handleCloseMovie();
     fetchMovies();
+
     return () => {
       controller.abort();
     };
