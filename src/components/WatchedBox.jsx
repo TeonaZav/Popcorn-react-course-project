@@ -22,7 +22,7 @@ const WatchedBox = ({
         />
       ) : (
         <>
-          <WatchedSummary watched={watched} />
+          {/* <WatchedSummary watched={watched} /> */}
           <button
             className="btn-toggle"
             onClick={() => setIsOpen2((open) => !open)}
