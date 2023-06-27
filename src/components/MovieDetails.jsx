@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import StarRating from "./StarRating";
 import Loader from "./Loader";
 
-const KEY = "4b367d74";
+const KEY = `${process.env.REACT_APP_API_KEY}`;
 
 const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
   const [movie, setMovie] = useState({});

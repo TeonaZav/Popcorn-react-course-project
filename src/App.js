@@ -10,7 +10,7 @@ import MovieList from "./components/MovieList.jsx";
 import Loader from "./components/Loader.jsx";
 import ErrorMessage from "./components/ErrorMessage.jsx";
 
-const KEY = "4b367d74";
+const KEY = `${process.env.REACT_APP_API_KEY}`;
 
 function App() {
   const [query, setQuery] = useState("");
