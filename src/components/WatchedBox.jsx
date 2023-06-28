@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import WatchedSummary from "./WatchedSummary";
 import WatchedMoviesList from "./WatchedMoviesList";
 import MovieDetails from "./MovieDetails";
-
 const WatchedBox = ({
   watched,
   selectedId,
@@ -14,7 +13,7 @@ const WatchedBox = ({
 
   return (
     <div className="box">
-      {selectedId && watched ? (
+      {selectedId ? (
         <MovieDetails
           selectedId={selectedId}
           onCloseMovie={onCloseMovie}
