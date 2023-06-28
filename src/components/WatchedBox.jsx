@@ -30,7 +30,7 @@ const WatchedBox = ({
           >
             {isOpen2 ? "–" : "+"}
           </button>
-          {isOpen2 && watched && (
+          {isOpen2 && (
             <>
               <WatchedMoviesList
                 watched={watched}

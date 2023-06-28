@@ -22,6 +22,7 @@ function App() {
 
   function handleSelectMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
+    console.log("hii");
   }
 
   function handleCloseMovie() {
